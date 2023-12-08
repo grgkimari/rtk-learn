@@ -26,4 +26,12 @@ const reducer = (state = initialState, action) =>{
 }
 
 const store = redux.createStore(reducer)
+const unsubscribe = store.subscribe(() => {
+    console.log("UpdateState : " + JSON.stringify(store.getState()))
+})
 console.log(`initialState : ${JSON.stringify(store.getState())}`)
+store.dispatch(orderCake())
+store.dispatch(orderCake())
+store.dispatch(orderCake())
+
+unsubscribe()
