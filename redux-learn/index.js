@@ -1,5 +1,7 @@
 const redux = require('redux')
 
+const bindActionCreators = redux.bindActionCreators
+
 //Action Types
 const CAKE_ORDERED = "CAKE_ORDERED"
 const CAKE_RESTOCKED = "CAKE_RESTOCKED"
@@ -45,9 +47,19 @@ const unsubscribe = store.subscribe(() => {
     console.log("UpdateState : " + JSON.stringify(store.getState()))
 })
 console.log(`initialState : ${JSON.stringify(store.getState())}`)
-store.dispatch(orderCake())
-store.dispatch(orderCake())
-store.dispatch(orderCake())
-store.dispatch(restockCakes(5))
+// store.dispatch(orderCake())
+// store.dispatch(orderCake())
+// store.dispatch(orderCake())
+// store.dispatch(restockCakes(5))
+// store.dispatch(orderCake())
+// store.dispatch(orderCake())
+// store.dispatch(orderCake())
+// store.dispatch(restockCakes(7))
+
+const actions = bindActionCreators({ orderCake, restockCakes}, store.dispatch)
+actions.orderCake()
+actions.orderCake()
+actions.orderCake()
+actions.restockCakes(5)
 
 unsubscribe()
