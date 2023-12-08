@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev" : "node index",
+    "dev": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "immer": "^10.0.3",
     "redux": "^5.0.0"
   },
   "devDependencies": {

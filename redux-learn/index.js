@@ -1,5 +1,5 @@
 const redux = require('redux')
-
+const produce = require('immer').produce
 const bindActionCreators = redux.bindActionCreators
 const combineReducers = redux.combineReducers
 
@@ -55,15 +55,13 @@ const initialIcecreamState = {
 const cakeReducer = (state = initialCakeState, action) =>{
     switch (action.type){
         case CAKE_ORDERED:
-            return{
-                ...state,
-                numberOfCakes : state.numberOfCakes - action.payload.quantity
-            }
+            return produce(state, (draft) => {
+                draft.numberOfCakes -= action.payload.quantity
+            })
         case CAKE_RESTOCKED:
-            return {
-                ...state,
-                numberOfCakes : state.numberOfCakes + action.payload.quantity
-            }
+            return produce(state, (draft) => {
+                draft.numberOfCakes += action.payload.quantity
+            })
 
        
         default:
@@ -74,15 +72,13 @@ const icecreamReducer = (state = initialIcecreamState, action) =>{
     switch (action.type){
 
         case ICECREAM_ORDERED:
-            return {
-                ...state,
-                numberOfIceCreams : state.numberOfIceCreams - action.payload.quantity
-            }
+            return produce(state, (draft) => {
+                draft.numberOfIceCreams -= action.payload.quantity
+            })
         case ICECREAM_RESTOCKED:
-            return {
-                ...state,
-                numberOfIceCreams : state.numberOfIceCreams + action.payload.quantity
-            }
+            return produce(state, (draft) => {
+                draft.numberOfIceCreams += action.payload.quantity
+            })
         default:
             return state
     }
