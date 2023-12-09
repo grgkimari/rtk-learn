@@ -1,5 +1,9 @@
 const redux = require('redux')
 const produce = require('immer').produce
+const reduxLogger = require('redux-logger')
+
+const applyMiddleWare = redux.applyMiddleware
+const logger = reduxLogger.createLogger()
 const bindActionCreators = redux.bindActionCreators
 const combineReducers = redux.combineReducers
 
@@ -87,11 +91,11 @@ const rootReducer = combineReducers({
     cake : cakeReducer,
     icecream : icecreamReducer
 })
-const store = redux.createStore(rootReducer)
+const store = redux.createStore(rootReducer, applyMiddleWare(logger))
 const unsubscribe = store.subscribe(() => {
-    console.log("UpdateState : " + JSON.stringify(store.getState()))
+    // console.log("UpdateState : " + JSON.stringify(store.getState()))
 })
-console.log(`initialState : ${JSON.stringify(store.getState())}`)
+// console.log(`initialState : ${JSON.stringify(store.getState())}`)
 // store.dispatch(orderCake())
 // store.dispatch(orderCake())
 // store.dispatch(orderCake())
