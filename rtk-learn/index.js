@@ -2,7 +2,7 @@ const { IcecreamActions } = require('./Features/Icecream/IcecreamSlice')
 const store = require('./app/Store')
 const cakeActions = require('./Features/Cake/CakeSlice').cakeActions
 console.log("Initial state : " + JSON.stringify(store.getState()))
-const unsubscribe = store.subscribe(() => console.log(`Updated state : ${JSON.stringify(store.getState())}`))
+const unsubscribe = store.subscribe(() => {})
 
 store.dispatch(cakeActions.ordered(3))
 store.dispatch(cakeActions.restocked(3))
