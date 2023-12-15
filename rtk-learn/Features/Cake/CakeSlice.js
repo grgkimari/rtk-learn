@@ -5,7 +5,7 @@ const initialState = {
 }
 
 
-export const CakeSlice = createSlice({
+const CakeSlice = createSlice({
 name : "CakeSlice",
 initialState ,
 reducers : {
