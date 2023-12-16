@@ -7,7 +7,7 @@ const logger = createLogger();
 const store = configureStore({
   reducer: {
     cake: cakeReducer,
-    iceCream: iceCreamReducer,
+    icecream: iceCreamReducer,
     user: userReducer,
   },
   middleware: (getDefaultMiddleware) => {

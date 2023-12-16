@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { get } from "axios";
+import axios from "axios";
 const initialState = {
   loading: false,
   data: [],
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const fetchUsers = createAsyncThunk("UserSlice/fetchUsers", async () => {
-  const response = await get("https://jsonplaceholder.typicode.com/users");
+  const response = await axios.get("https://jsonplaceholder.typicode.com/users");
   const data = response.data.map((user) => user.id);
   return data;
 });
